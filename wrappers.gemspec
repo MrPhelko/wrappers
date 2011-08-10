@@ -5,12 +5,12 @@
 
 Gem::Specification.new do |s|
   s.name = %q{wrappers}
-  s.version = "0.1.1"
+  s.version = "0.1.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["David Henry and Alberto Pe\303\261a"]
   s.date = %q{2011-08-10}
-  s.description = %q{Wrappers to remove primitive obsession}
+  s.description = %q{TODO: longer description of your gem}
   s.email = %q{dw_henry@yahoo.com.au}
   s.extra_rdoc_files = [
     "LICENSE.txt",
@@ -36,7 +36,7 @@ Gem::Specification.new do |s|
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.5.3}
-  s.summary = %q{Wrappers to remove primitive obsession}
+  s.summary = %q{TODO: one-line summary of your gem}
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
