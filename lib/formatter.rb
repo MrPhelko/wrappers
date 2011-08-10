@@ -56,6 +56,17 @@ module Extended
     end
   end
 
+  class PercentageFormatter < NumberFormatter
+    def initialize(value, options)
+      super
+      @value = value * 100
+    end
+
+    def format
+      "#{super} %"
+    end
+  end
+
   class MoneyFormatter < Formatter
     def initialize(value, currency, options={})
       @currency = currency

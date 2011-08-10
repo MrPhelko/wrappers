@@ -39,6 +39,16 @@ module Extended
         Number.new(0.01).to_s(:decimals => 2).should == '0.01'
       end
     end
+
+    context 'as percentage' do
+      it 'renders as percentage' do
+        Number.new(0.1).to_s(:as => :percentage).should == '10 %'
+      end
+
+      it 'renders as percentage with decimals' do
+        Number.new(0.1).to_s(:as => :percentage, :decimals => 2).should == '10.00 %'
+      end
+    end
   end
 
   describe 'Money formatting' do

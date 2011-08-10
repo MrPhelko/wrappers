@@ -57,8 +57,9 @@ module Extended
         value.should == Money.new(1.3)
       end
 
-      it 'raise an error if attempt to divided to money objects' do
-        expect { Money.new(12) / Money.new(12) }.to raise_error
+      it 'two moneys returns a number' do
+        value = Money.new(12) / Money.new(12)
+        value.should == Number.new(1)
       end
 
       context 'when non-USD money' do
@@ -71,6 +72,10 @@ module Extended
         it 'by a ruby number' do
           value = Money.new(13, ccy) / 10
           value.should == Money.new(1.3, ccy)
+        end
+
+        it 'when different currencies' do
+          expect { Money.new(13, ccy) / Money.new(13) }.to raise_error
         end
       end
     end

@@ -19,6 +19,10 @@ module Extended
       self
     end
 
+    def -(val)
+      self
+    end
+
     def to_s(*args)
       '-'
     end
@@ -80,11 +84,20 @@ module Extended
       create(value + add_by)
     end
 
+    def -(subtractor)
+      return subtractor if [Error, Missing, Blank].include?(subtractor.class)
+      raise 'Can not add to money' if subtractor.class == Money
+
+      subtract_by = subtractor.respond_to?(:value) ? subtractor.value : subtractor
+      create(value - subtract_by)
+    end
+
     def sign_of_value
       value >= 0 ? 'positive' : 'negative'
     end
 
     def to_s(options={})
+      return PercentageFormatter.new(value, options).format if options[:as] == :percentage
       NumberFormatter.new(value, options).format
     end
 
@@ -107,11 +120,24 @@ module Extended
       super
     end
 
+    def /(divisor)
+      return super unless divisor.class == Money
+      raise 'Can not divide moneys with different currency' unless currency == divisor.currency
+      Number.new(value / divisor.value)
+    end
+
     def +(adder)
       return adder if [Error, Missing, Blank].include?(adder.class)
-      raise 'Can only add two numbers' unless adder.class == Money
+      raise 'Can only add two moneys' unless adder.class == Money
       raise 'Currency must match to add' unless currency == adder.currency
       create(value + adder.value)
+    end
+
+    def -(substractor)
+      return substractor if [Error, Missing, Blank].include?(substractor.class)
+      raise 'Can only subtract two moneys' unless substractor.class == Money
+      raise 'Currency must match to subtract' unless currency == substractor.currency
+      create(value - substractor.value)
     end
 
     def to_s(options={})
