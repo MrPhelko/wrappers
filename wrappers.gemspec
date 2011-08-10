@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{wrappers}
-  s.version = "0.1.6"
+  s.version = "0.1.8"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["David Henry and Alberto Pe\303\261a"]
@@ -29,8 +29,10 @@ Gem::Specification.new do |s|
     "VERSION",
     "lib/extended.rb",
     "lib/formatter.rb",
-    "spec/extended_spec.rb",
+    "spec/addition_spec.rb",
+    "spec/division_spec.rb",
     "spec/formating_spec.rb",
+    "spec/multiplication_spec.rb",
     "spec/spec_helper.rb",
     "wrappers.gemspec"
   ]
