@@ -11,7 +11,7 @@ module Extended
       self
     end
 
-    def to_s
+    def to_s(*args)
       '-'
     end
 
