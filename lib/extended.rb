@@ -1,4 +1,5 @@
 require 'bigdecimal'
+require 'formatter'
 
 module Extended
   module DefaultConfiguration
@@ -12,6 +13,10 @@ module Extended
 
     def to_s
       '-'
+    end
+
+    def sign_of_value
+      nil
     end
   end
 
@@ -51,7 +56,16 @@ module Extended
       create(value * multiply_by)
     end
 
+    def sign_of_value
+      value >= 0 ? 'positive' : 'negative'
+    end
+
+    def to_s(options={})
+      NumberFormatter.new(value, options).format
+    end
+
     private
+
     def create(value)
       Number.new(value)
     end
@@ -67,6 +81,10 @@ module Extended
     def *(multiplier)
       raise 'Can not multiply 2 numbers' if multiplier.class == Money
       super
+    end
+
+    def to_s(options={})
+      MoneyFormatter.new(value, currency, options).format
     end
 
     def ==(money)
