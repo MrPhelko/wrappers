@@ -11,6 +11,14 @@ module Extended
       self
     end
 
+    def /(val)
+      self
+    end
+
+    def +(val)
+      self
+    end
+
     def to_s(*args)
       '-'
     end
@@ -56,6 +64,22 @@ module Extended
       create(value * multiply_by)
     end
 
+    def /(divisor)
+      return divisor if [Error, Missing, Blank].include?(divisor.class)
+      raise 'Can not divide by money' if divisor.class == Money
+
+      divide_by = divisor.respond_to?(:value) ? divisor.value : divisor
+      create(value / divide_by)
+    end
+
+    def +(adder)
+      return adder if [Error, Missing, Blank].include?(adder.class)
+      raise 'Can not add to money' if adder.class == Money
+
+      add_by = adder.respond_to?(:value) ? adder.value : adder
+      create(value + add_by)
+    end
+
     def sign_of_value
       value >= 0 ? 'positive' : 'negative'
     end
@@ -79,8 +103,15 @@ module Extended
     end
 
     def *(multiplier)
-      raise 'Can not multiply 2 numbers' if multiplier.class == Money
+      raise 'Can not multiply 2 moneys' if multiplier.class == Money
       super
+    end
+
+    def +(adder)
+      return adder if [Error, Missing, Blank].include?(adder.class)
+      raise 'Can only add two numbers' unless adder.class == Money
+      raise 'Currency must match to add' unless currency == adder.currency
+      create(value + adder.value)
     end
 
     def to_s(options={})
