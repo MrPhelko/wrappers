@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "wrappers"
   gem.homepage = "http://github.com/dwhenry/wrappers"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Helper gem used to remove primitive obsession}
+  gem.description = %Q{Provides simple Money, Number and Date classes to handle errors from the web services}
   gem.email = "dw_henry@yahoo.com.au"
   gem.authors = ["David Henry and Alberto Peña"]
   # dependencies defined in Gemfile
