@@ -78,7 +78,7 @@ module Extended
 
   class Number < Object
     def initialize(value)
-      @value = ::BigDecimal.new(value.to_s)
+      @value = ::BigDecimal.new(value_for(value).to_s)
     end
 
     def *(multiplier)
