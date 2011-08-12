@@ -161,7 +161,7 @@ module Extended
     end
 
     def to_usd(date=Date.today)
-      usd_value = (number / Extended.bank.usd_rate_for(currency, date))
+      usd_value = (number / Extended.bank.usd_rate_for(currency.to_s, date))
       return usd_value if invalid_class?(usd_value)
       Money.new(usd_value)
     end
