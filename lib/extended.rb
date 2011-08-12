@@ -1,7 +1,19 @@
 require 'bigdecimal'
 require 'formatter'
+require 'bank'
 
 module Extended
+  @@bank = Bank.new
+
+  def self.bank
+    @@bank
+  end
+
+  def self.bank=(bank)
+    raise 'Bank must inherit from Extended::Bank' unless bank.class.ancestors.include?(Extended::Bank)
+    @@bank = bank
+  end
+
   module DefaultConfiguration
     def ==(object)
       self.class == object.class
@@ -27,6 +39,10 @@ module Extended
       '-'
     end
 
+    def to_usd(*args)
+      self
+    end
+
     def sign_of_value
       nil
     end
@@ -50,6 +66,11 @@ module Extended
     def to_s
       @value
     end
+
+    private
+    def invalid_class?(object)
+      [Error, Missing, Blank].include?(object.class)
+    end
   end
 
   class String < Object
@@ -61,35 +82,27 @@ module Extended
     end
 
     def *(multiplier)
-      return multiplier if [Error, Missing, Blank].include?(multiplier.class)
+      return multiplier if invalid_class?(multiplier)
       return multiplier * self if multiplier.class == Money
-
-      multiply_by = multiplier.respond_to?(:value) ? multiplier.value : multiplier
-      create(value * multiply_by)
+      create(value * value_for(multiplier))
     end
 
     def /(divisor)
-      return divisor if [Error, Missing, Blank].include?(divisor.class)
+      return divisor if invalid_class?(divisor)
       raise 'Can not divide by money' if divisor.class == Money
-
-      divide_by = divisor.respond_to?(:value) ? divisor.value : divisor
-      create(value / divide_by)
+      create(value / value_for(divisor))
     end
 
     def +(adder)
-      return adder if [Error, Missing, Blank].include?(adder.class)
+      return adder if invalid_class?(adder)
       raise 'Can not add to money' if adder.class == Money
-
-      add_by = adder.respond_to?(:value) ? adder.value : adder
-      create(value + add_by)
+      create(value + value_for(adder))
     end
 
     def -(subtractor)
-      return subtractor if [Error, Missing, Blank].include?(subtractor.class)
+      return subtractor if invalid_class?(subtractor)
       raise 'Can not add to money' if subtractor.class == Money
-
-      subtract_by = subtractor.respond_to?(:value) ? subtractor.value : subtractor
-      create(value - subtract_by)
+      create(value - value_for(subtractor))
     end
 
     def sign_of_value
@@ -102,6 +115,9 @@ module Extended
     end
 
     private
+    def value_for(object)
+      object.respond_to?(:value) ? object.value : object
+    end
 
     def create(value)
       Number.new(value)
@@ -127,14 +143,14 @@ module Extended
     end
 
     def +(adder)
-      return adder if [Error, Missing, Blank].include?(adder.class)
+      return adder if invalid_class?(adder)
       raise 'Can only add two moneys' unless adder.class == Money
       raise 'Currency must match to add' unless currency == adder.currency
       create(value + adder.value)
     end
 
     def -(substractor)
-      return substractor if [Error, Missing, Blank].include?(substractor.class)
+      return substractor if invalid_class?(substractor)
       raise 'Can only subtract two moneys' unless substractor.class == Money
       raise 'Currency must match to subtract' unless currency == substractor.currency
       create(value - substractor.value)
@@ -144,17 +160,30 @@ module Extended
       MoneyFormatter.new(value, currency, options).format
     end
 
+    def to_usd(date=Date.today)
+      usd_value = (number / Extended.bank.usd_rate_for(currency, date))
+      return usd_value if invalid_class?(usd_value)
+      Money.new(usd_value)
+    end
+
     def ==(money)
       super && self.currency == money.currency
     end
 
     private
+    def number
+      Number.new(value)
+    end
+
     def create(value)
       Money.new(value, currency)
     end
   end
 
   class Currency < Object
+    def ==(currency)
+      super || value == currency
+    end
   end
 
   class DateTime < Object
