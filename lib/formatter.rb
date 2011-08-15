@@ -2,8 +2,8 @@ module Extended
   class Formatter
     def initialize(value, options = {})
       @value = value.abs
-      @positive = value >= 0
       @decimal_places = options[:decimals] || 0
+      @positive = value >= 0 || round == 0
     end
 
     private
@@ -41,7 +41,7 @@ module Extended
     end
 
     def round
-      (@value * 10**decimal_places).round
+       (@value * 10**decimal_places).round
     end
 
     def decimal_places
@@ -58,8 +58,7 @@ module Extended
 
   class PercentageFormatter < NumberFormatter
     def initialize(value, options)
-      super
-      @value = value * 100
+      super(value*100, options)
     end
 
     def format

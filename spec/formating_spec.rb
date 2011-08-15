@@ -48,6 +48,17 @@ module Extended
       it 'renders as percentage with decimals' do
         Number.new(0.1).to_s(:as => :percentage, :decimals => 2).should == '10.00 %'
       end
+
+      context 'Renders a negative number correctly' do
+        it 'when a simple negative' do
+          Number.new(-0.1).to_s(:as => :percentage, :decimals => 2).should == '-10.00 %'
+        end
+
+        it 'handles rounding correctly' do
+          Number.new(-0.00001).to_s(:as => :percentage, :decimals => 2).should == '0.00 %'
+          Number.new(-0.0001).to_s(:as => :percentage, :decimals => 2).should == '-0.01 %'
+        end
+      end
     end
   end
 
