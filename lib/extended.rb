@@ -190,6 +190,10 @@ module Extended
     def ==(currency)
       super || value == currency
     end
+
+    def to_s
+      @value.upcase
+    end
   end
 
   class DateTime < Object
