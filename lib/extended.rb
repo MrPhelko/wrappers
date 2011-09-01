@@ -1,6 +1,12 @@
 require 'bigdecimal'
 require 'formatter'
 require 'bank'
+require 'active_support'
+begin
+  require 'active_support/all'
+rescue LoadError
+  # activesupport/all was a later addition
+end
 
 module Extended
   @@bank = Bank.new
@@ -194,5 +200,8 @@ module Extended
     def to_s
       @value.strftime('%d %b %Y %H:%M')
     end
+
+    # we expect it to function similar to a datetime
+    delegate :to_time, :to_date, :to_datetime, :to_f, :to_i, :to => :value
   end
 end
