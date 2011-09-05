@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{wrappers}
-  s.version = "0.2.7"
+  s.version = "0.2.8"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["David Henry and Alberto Pe\303\261a"]
-  s.date = %q{2011-09-01}
+  s.date = %q{2011-09-05}
   s.description = %q{Provides simple Money, Number and Date classes to handle errors from the web services}
   s.email = %q{dw_henry@yahoo.com.au}
   s.extra_rdoc_files = [
@@ -37,6 +37,7 @@ Gem::Specification.new do |s|
     "spec/division_spec.rb",
     "spec/extended_spec.rb",
     "spec/formating_spec.rb",
+    "spec/missing_spec.rb",
     "spec/money_spec.rb",
     "spec/multiplication_spec.rb",
     "spec/spec_helper.rb",
