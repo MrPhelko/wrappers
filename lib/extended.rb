@@ -45,6 +45,10 @@ module Extended
       '-'
     end
 
+    def value
+      nil
+    end
+
     def to_usd(*args)
       self
     end
