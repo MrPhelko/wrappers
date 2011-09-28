@@ -1,7 +1,7 @@
 require 'bigdecimal'
 require 'formatter'
-require 'bank'
 require 'active_support'
+require 'bank'
 
 begin
   require 'active_support/all'

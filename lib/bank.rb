@@ -10,8 +10,8 @@ module Extended
     end
     
     def normalize_value(value, currency)
-      return value unless NORMALIZING_RATIO.keys.include?(currency.value)
-      value * NORMALIZING_RATIO[currency.value]
+      return Number.new(value) unless NORMALIZING_RATIO.keys.include?(currency.value)
+      Number.new(value) * NORMALIZING_RATIO[currency.value]
     end
   end
 end
