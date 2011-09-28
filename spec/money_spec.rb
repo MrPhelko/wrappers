@@ -26,15 +26,15 @@ module Extended
         end
 
         it 'return the converted value if non-USD' do
-          Money.new(1200, 'RUB').to_usd.should == Money.new(12)
+          Money.new(1200, Currency.new('RUB')).to_usd.should == Money.new(12)
         end
 
         it 'return missing if rate not found' do
-          Money.new(1200, 'Unknown').to_usd.should == Missing.new
+          Money.new(1200, Currency.new('Unknown')).to_usd.should == Missing.new
         end
 
         it 'for a given date' do
-          Money.new(1200, 'RUB').to_usd(Date.today - 1).should == Money.new(10)
+          Money.new(1200, Currency.new('RUB')).to_usd(Date.today - 1).should == Money.new(10)
         end
       end
     end
@@ -42,6 +42,39 @@ module Extended
     context 'when invalid money object' do
       it 'returns the object' do
         Error.new.to_usd.should == Error.new
+      end
+    end
+    
+    context 'correct load GBP currencies' do
+      class GBPTestBank < Extended::Bank
+        def usd_rate_for(ccy, date=Date.today)
+          return Number.new(0.5)
+        end
+      end
+
+      before { Extended.bank = GBPTestBank.new }
+      after { Extended.bank = Extended::Bank.new }
+
+      context 'when currency is GBP it loads as normal' do
+        let(:ccy) { Currency.new('GBP') }
+        it 'values is correct' do
+          Money.new(1200, ccy).value.should == 1200
+        end
+        
+        it 'USD value is correct' do
+          Money.new(1200, ccy).to_usd.should == Money.new(2400)
+        end
+      end
+      
+      context 'converts pence to pounds when currency is GBp' do
+        let(:ccy) { Currency.new('GBp') }
+        it 'value is correct' do
+          Money.new(1200, ccy).value.should == 12        
+        end
+
+        it 'USD value is correct' do
+          Money.new(1200, ccy).to_usd.should == Money.new(24)
+        end
       end
     end
   end
