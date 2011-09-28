@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{wrappers}
-  s.version = "0.2.8"
+  s.version = "0.2.9"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["David Henry and Alberto Pe\303\261a"]
-  s.date = %q{2011-09-05}
+  s.date = %q{2011-09-28}
   s.description = %q{Provides simple Money, Number and Date classes to handle errors from the web services}
   s.email = %q{dw_henry@yahoo.com.au}
   s.extra_rdoc_files = [
@@ -29,6 +29,12 @@ Gem::Specification.new do |s|
     "VERSION",
     "lib/bank.rb",
     "lib/extended.rb",
+    "lib/extended/currency.rb",
+    "lib/extended/datetime.rb",
+    "lib/extended/money.rb",
+    "lib/extended/number.rb",
+    "lib/extended/object.rb",
+    "lib/extended/string.rb",
     "lib/formatter.rb",
     "spec/addition_spec.rb",
     "spec/bank_spec.rb",
@@ -59,6 +65,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.6.2"])
       s.add_development_dependency(%q<rcov>, [">= 0"])
+      s.add_development_dependency(%q<ruby-debug>, [">= 0"])
       s.add_development_dependency(%q<i18n>, [">= 0"])
     else
       s.add_dependency(%q<activesupport>, [">= 0"])
@@ -66,6 +73,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_dependency(%q<jeweler>, ["~> 1.6.2"])
       s.add_dependency(%q<rcov>, [">= 0"])
+      s.add_dependency(%q<ruby-debug>, [">= 0"])
       s.add_dependency(%q<i18n>, [">= 0"])
     end
   else
@@ -74,6 +82,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<bundler>, ["~> 1.0.0"])
     s.add_dependency(%q<jeweler>, ["~> 1.6.2"])
     s.add_dependency(%q<rcov>, [">= 0"])
+    s.add_dependency(%q<ruby-debug>, [">= 0"])
     s.add_dependency(%q<i18n>, [">= 0"])
   end
 end
