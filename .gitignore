@@ -3,7 +3,7 @@ coverage
 
 # rdoc generated
 rdoc
-
+*.un~
 # yard generated
 doc
 .yardoc
