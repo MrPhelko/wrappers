@@ -41,7 +41,7 @@ module Extended
     end
 
     def round
-       (@value * 10**decimal_places).round
+       (@value * 10**decimal_places).round(0)
     end
 
     def decimal_places
