@@ -16,7 +16,11 @@ module Extended
 
     private
     def invalid_class?(object)
-      [Error, Missing, Blank].include?(object.class)
+      [Error, Missing].include?(object.class)
+    end
+    
+    def ignore_class?(object)
+      [Blank].include?(object.class)
     end
   end
 end

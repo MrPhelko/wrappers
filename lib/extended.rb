@@ -61,7 +61,6 @@ module Extended
 
   class Error; include Extended::DefaultConfiguration; end
   class Missing; include Extended::DefaultConfiguration; end
-  class Blank; include Extended::DefaultConfiguration; end
 end
 
 require 'extended/object'
@@ -70,4 +69,5 @@ require 'extended/number'
 require 'extended/currency'
 require 'extended/money'
 require 'extended/datetime'
+require 'extended/blank'
 
