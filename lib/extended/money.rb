@@ -42,7 +42,7 @@ module Extended
     end
 
     def ==(money)
-      super && self.currency == money.currency
+      super && self.class == money.class && self.currency == money.currency
     end
 
     private

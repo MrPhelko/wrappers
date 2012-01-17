@@ -40,6 +40,10 @@ module Extended
       return PercentageFormatter.new(value, options).format if options[:as] == :percentage
       NumberFormatter.new(value, options).format
     end
+    
+    def ==(val)
+      super || (val.is_a?(Numeric) && self.value == val)
+    end
 
     private
     def value_for(object)
