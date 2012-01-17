@@ -5,7 +5,7 @@ module Extended
     end
     
     def method_missing(method, *args)
-      @value.send(method, *args) if @value.respond_to?(method)
+      return @value.send(method, *args) if @value.respond_to?(method)
       super
     end
 

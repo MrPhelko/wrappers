@@ -8,6 +8,10 @@ describe Extended::Number, :equality do
   it 'does not match a non matching numeric value' do
     (Extended::Number.new(100) == 1).should be_false
   end
+  
+  it 'can handle less than' do
+    (Extended::Number.new(100) < 110).should be_true
+  end
 end
 
 describe Extended::Money, :equality do
