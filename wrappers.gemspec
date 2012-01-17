@@ -42,6 +42,7 @@ Gem::Specification.new do |s|
     "spec/currency_spec.rb",
     "spec/datetime_spec.rb",
     "spec/division_spec.rb",
+    "spec/equality_spec.rb",
     "spec/extended_spec.rb",
     "spec/formating_spec.rb",
     "spec/missing_spec.rb",
