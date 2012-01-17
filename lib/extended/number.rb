@@ -10,15 +10,13 @@ module Extended
     end
 
     def *(multiplier)
-      return self if ignore_class?(multiplier)
-      return multiplier if invalid_class?(multiplier)
+      return multiplier if invalid_and_ignore_class?(multiplier)
       return multiplier * self if multiplier.class == Money
       create(value * value_for(multiplier))
     end
 
     def /(divisor)
-      return self if ignore_class?(divisor)
-      return divisor if invalid_class?(divisor)
+      return divisor if invalid_and_ignore_class?(divisor)
       raise 'Can not divide by money' if divisor.class == Money
       create(value / value_for(divisor))
     end

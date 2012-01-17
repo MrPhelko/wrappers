@@ -15,6 +15,10 @@ module Extended
     end
 
     private
+    def invalid_and_ignore_class?(object)
+      invalid_class?(object) || ignore_class?(object)
+    end
+    
     def invalid_class?(object)
       [Error, Missing].include?(object.class)
     end
