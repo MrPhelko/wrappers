@@ -45,6 +45,10 @@ module Extended
       super || (val.is_a?(Numeric) && self.value == val)
     end
 
+    def to_yaml
+      value.to_s('F')
+    end
+
     private
     def value_for(object)
       object.respond_to?(:value) ? object.value : object
