@@ -11,3 +11,10 @@ describe Extended::Number, 'summing values' do
     value.should == Extended::Number.new(10)
   end
 end
+
+describe Extended::Money, 'summing values' do
+  it 'returns blank if summed with a blank' do
+    value = Extended::Money.new(100) + Extended::Blank.new
+    value.should == Extended::Blank.new
+  end
+end
