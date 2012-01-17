@@ -4,14 +4,14 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{wrappers}
-  s.version = "0.2.10"
+  s.name = "wrappers"
+  s.version = "0.2.11"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["David Henry and Alberto Pe\303\261a"]
-  s.date = %q{2011-09-28}
-  s.description = %q{Provides simple Money, Number and Date classes to handle errors from the web services}
-  s.email = %q{dw_henry@yahoo.com.au}
+  s.date = "2012-01-17"
+  s.description = "Provides simple Money, Number and Date classes to handle errors from the web services"
+  s.email = "dw_henry@yahoo.com.au"
   s.extra_rdoc_files = [
     "LICENSE.txt",
     "README",
@@ -29,6 +29,7 @@ Gem::Specification.new do |s|
     "VERSION",
     "lib/bank.rb",
     "lib/extended.rb",
+    "lib/extended/blank.rb",
     "lib/extended/currency.rb",
     "lib/extended/datetime.rb",
     "lib/extended/money.rb",
@@ -48,13 +49,14 @@ Gem::Specification.new do |s|
     "spec/multiplication_spec.rb",
     "spec/spec_helper.rb",
     "spec/subtraction_spec.rb",
+    "spec/summing_numbers_and_blanks_spec.rb",
     "wrappers.gemspec"
   ]
-  s.homepage = %q{http://github.com/dwhenry/wrappers}
+  s.homepage = "http://github.com/dwhenry/wrappers"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.6.2}
-  s.summary = %q{Helper gem used to remove primitive obsession}
+  s.rubygems_version = "1.8.10"
+  s.summary = "Helper gem used to remove primitive obsession"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
