@@ -3,6 +3,11 @@ module Extended
     def initialize(value)
       @value = ::BigDecimal.new(value_for(value).to_s)
     end
+    
+    def method_missing(method, *args)
+      @value.send(method, *args) if @value.respond_to?(method)
+      super
+    end
 
     def *(multiplier)
       return self if ignore_class?(multiplier)
