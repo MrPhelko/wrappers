@@ -18,14 +18,14 @@ module Extended
     end
 
     def +(adder)
-      return adder if invalid_class?(adder)
+      return adder if invalid_and_ignore_class?(adder)
       raise 'Can only add two moneys' unless adder.class == Money
       raise 'Currency must match to add' unless currency == adder.currency
       create(value + adder.value)
     end
 
     def -(substractor)
-      return substractor if invalid_class?(substractor)
+      return substractor if invalid_and_ignore_class?(substractor)
       raise 'Can only subtract two moneys' unless substractor.class == Money
       raise 'Currency must match to subtract' unless currency == substractor.currency
       create(value - substractor.value)
@@ -42,7 +42,7 @@ module Extended
     end
 
     def ==(money)
-      super && self.currency == money.currency
+      super && self.class == money.class && self.currency == money.currency
     end
 
     private

@@ -12,6 +12,7 @@ Gem::Specification.new do |s|
   s.date = %q{2012-01-05}
   s.description = %q{Provides simple Money, Number and Date classes to handle errors from the web services}
   s.email = %q{dw_henry@yahoo.com.au}
+
   s.extra_rdoc_files = [
     "LICENSE.txt",
     "README",
@@ -29,6 +30,7 @@ Gem::Specification.new do |s|
     "VERSION",
     "lib/bank.rb",
     "lib/extended.rb",
+    "lib/extended/blank.rb",
     "lib/extended/currency.rb",
     "lib/extended/datetime.rb",
     "lib/extended/money.rb",
@@ -41,6 +43,7 @@ Gem::Specification.new do |s|
     "spec/currency_spec.rb",
     "spec/datetime_spec.rb",
     "spec/division_spec.rb",
+    "spec/equality_spec.rb",
     "spec/extended_spec.rb",
     "spec/formating_spec.rb",
     "spec/missing_spec.rb",
@@ -48,13 +51,15 @@ Gem::Specification.new do |s|
     "spec/multiplication_spec.rb",
     "spec/spec_helper.rb",
     "spec/subtraction_spec.rb",
+    "spec/summing_numbers_and_blanks_spec.rb",
+    "spec/to_yaml_spec.rb",
     "wrappers.gemspec"
   ]
-  s.homepage = %q{http://github.com/dwhenry/wrappers}
+  s.homepage = "http://github.com/dwhenry/wrappers"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.6.2}
-  s.summary = %q{Helper gem used to remove primitive obsession}
+  s.rubygems_version = "1.8.10"
+  s.summary = "Helper gem used to remove primitive obsession"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
