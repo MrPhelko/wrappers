@@ -60,6 +60,13 @@ module Extended
         end
       end
     end
+
+    context 'as absolute value' do
+      it 'displays with no "-" symbol at the start' do
+        Number.new(-100).to_s(:abs => true).should == '100'
+        Number.new(100).to_s(:abs => true).should == '100'
+      end
+    end
   end
 
   describe 'Money formatting' do
