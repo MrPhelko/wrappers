@@ -60,6 +60,13 @@ module Extended
         end
       end
     end
+
+    context 'as absolute value' do
+      it 'does not put a "-" at the start of the number' do
+        Number.new(100).to_s(:abs => true).should == '100'
+        Number.new(-100).to_s(:abs => true).should == '100'
+      end
+    end
   end
 
   describe 'Money formatting' do

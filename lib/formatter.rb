@@ -2,6 +2,7 @@ module Extended
   class Formatter
     def initialize(value, options = {})
       @value = value.abs
+      @abs = options[:abs] || false
       @decimal_places = options[:decimals] || 0
       @positive = value >= 0 || round == 0
     end
@@ -52,6 +53,7 @@ module Extended
   class NumberFormatter < Formatter
     def format
       return format_number if @positive
+      return format_number if @abs
       "-#{format_number}"
     end
   end
