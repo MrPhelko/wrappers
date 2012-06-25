@@ -67,6 +67,13 @@ module Extended
         Number.new(100).to_s(:abs => true).should == '100'
       end
     end
+
+    context 'as money value' do
+      it 'displays with no "-" symbol at the start' do
+        Number.new(-100).to_s(:money => true).should == '(100.00)'
+        Number.new(100).to_s(:money => true).should == '100.00'
+      end
+    end
   end
 
   describe 'Money formatting' do

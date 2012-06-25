@@ -4,6 +4,7 @@ module Extended
       @value = value.abs
       @decimal_places = options[:decimals] || 0
       @abs = options[:abs] || false
+      @money = options[:money] || false
       @positive = value >= 0 || round == 0
     end
 
@@ -52,6 +53,13 @@ module Extended
 
   class NumberFormatter < Formatter
     def format
+      if @money
+        decimals = decimal_places
+        @decimal_places = 2
+        val = @positive ? format_number : "(#{format_number})"
+        @decimal_places = decimals
+        return val
+      end
       return format_number if @positive
       return format_number if @abs
       "-#{format_number}"
@@ -83,7 +91,7 @@ module Extended
     private
     def format_currency
       return format_number if @hide_currency
-      "#{format_number} #{currency.to_s}" 
+      "#{format_number} #{currency.to_s}"
     end
 
     def currency
