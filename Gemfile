@@ -1,13 +1,11 @@
 source "http://rubygems.org"
 
-gem "activesupport"
+gem "activesupport", '~> 3.2.14'
 
 group :development do
   gem "rspec"
-  gem "bundler", "~> 1.0.0"
   gem "jeweler", "~> 1.6.2"
   gem "rcov", ">= 0"
-  gem 'ruby-debug19'
-
-  gem "i18n" # activesupport 3.1.0 forgot to have this dependency
+  gem 'ruby-debug19', :platform => :ruby_19
+  gem 'ruby-debug', :platform => :ruby_18
 end
