@@ -4,14 +4,14 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{wrappers}
-  s.version = "0.3.7"
+  s.name = "wrappers"
+  s.version = "0.3.8"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["David Henry and Alberto Peña"]
-  s.date = %q{2012-06-25}
-  s.description = %q{Provides simple Money, Number and Date classes to handle errors from the web services}
-  s.email = %q{dw_henry@yahoo.com.au}
+  s.authors = ["David Henry and Alberto Pe\u{f1}a"]
+  s.date = "2013-08-13"
+  s.description = "Provides simple Money, Number and Date classes to handle errors from the web services"
+  s.email = "dw_henry@yahoo.com.au"
   s.extra_rdoc_files = [
     "LICENSE.txt",
     "README",
@@ -54,40 +54,37 @@ Gem::Specification.new do |s|
     "spec/to_yaml_spec.rb",
     "wrappers.gemspec"
   ]
-  s.homepage = %q{http://github.com/dwhenry/wrappers}
+  s.homepage = "http://github.com/dwhenry/wrappers"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.6.2}
-  s.summary = %q{Helper gem used to remove primitive obsession}
+  s.rubygems_version = "2.0.6"
+  s.summary = "Helper gem used to remove primitive obsession"
 
   if s.respond_to? :specification_version then
-    s.specification_version = 3
+    s.specification_version = 4
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<activesupport>, [">= 0"])
+      s.add_runtime_dependency(%q<activesupport>, ["~> 3.2.14"])
       s.add_development_dependency(%q<rspec>, [">= 0"])
-      s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.6.2"])
       s.add_development_dependency(%q<rcov>, [">= 0"])
       s.add_development_dependency(%q<ruby-debug19>, [">= 0"])
-      s.add_development_dependency(%q<i18n>, [">= 0"])
+      s.add_development_dependency(%q<ruby-debug>, [">= 0"])
     else
-      s.add_dependency(%q<activesupport>, [">= 0"])
+      s.add_dependency(%q<activesupport>, ["~> 3.2.14"])
       s.add_dependency(%q<rspec>, [">= 0"])
-      s.add_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_dependency(%q<jeweler>, ["~> 1.6.2"])
       s.add_dependency(%q<rcov>, [">= 0"])
       s.add_dependency(%q<ruby-debug19>, [">= 0"])
-      s.add_dependency(%q<i18n>, [">= 0"])
+      s.add_dependency(%q<ruby-debug>, [">= 0"])
     end
   else
-    s.add_dependency(%q<activesupport>, [">= 0"])
+    s.add_dependency(%q<activesupport>, ["~> 3.2.14"])
     s.add_dependency(%q<rspec>, [">= 0"])
-    s.add_dependency(%q<bundler>, ["~> 1.0.0"])
     s.add_dependency(%q<jeweler>, ["~> 1.6.2"])
     s.add_dependency(%q<rcov>, [">= 0"])
     s.add_dependency(%q<ruby-debug19>, [">= 0"])
-    s.add_dependency(%q<i18n>, [">= 0"])
+    s.add_dependency(%q<ruby-debug>, [">= 0"])
   end
 end
 
