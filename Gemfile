@@ -1,11 +1,7 @@
-source "http://rubygems.org"
+source "https://rubygems.org"
 
-gem "activesupport", '~> 3.2.14'
+gem "activesupport", '~> 2.3.15'
 
 group :development do
-  gem "rspec"
-  gem "jeweler", "~> 1.6.2"
-  gem "rcov", ">= 0"
-  gem 'ruby-debug19', :platform => :ruby_19
-  gem 'ruby-debug', :platform => :ruby_18
+  gem 'rspec', '~> 2.14.1'
 end
